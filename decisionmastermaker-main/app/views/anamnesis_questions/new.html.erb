@@ -1,0 +1,4 @@
+<%= turbo_frame_tag 'new-anamnesis-question' do %>
+  <h2 class="text-lg font-bold"><%= t('fuseNodeNew') %>:</h2>
+  <%= render 'form', fuse_node: @fuse_node, anamnesis_question: @anamnesis_question, submitString: t('fuseNodeQuestionSubmit') %>
+<% end %>

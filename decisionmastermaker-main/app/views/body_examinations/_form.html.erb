@@ -1,0 +1,103 @@
+<%= form_with(model: [body_node, body_examination]) do |form| %>
+  <% if body_examination.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(body_examination.errors.count, "error") %> prohibited this body_examination from being saved:</h2>
+
+      <ul>
+        <% body_examination.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col">
+    <div class="flex gap-2 mb-2 items-start">
+      <div class="flex flex-col grow">
+        <%= form.label :location, t('bodyNodeLocation') %>
+          <%= form.select :location, options_for_select(
+                              BodyExamination.locations.sort_by{|e| t(e[0])}
+                                             .map{|k, v| [t(k).titleize, k]},
+                              form.object&.location || ''),
+                          {},
+                          class: <<~CLASSES
+                              px-1 py-1 grow mb-2
+                              bg-white dark:bg-black border border-gray-25
+                              dark:border-gray-75
+                              rounded-md focus:outline-none focus:border-blue-75
+                              dark:focus:border-blue-25 shadow-md dark:shadow-black
+                              hover:cursor-pointer
+                              text-sm
+                          CLASSES
+                          %>
+              <%= form.label :location_details, t('bodyNodeLocationDetails'), class: 'mb-2' %>
+              <%= form.text_field :location_details, class: <<~CLASSES
+                      px-1 py-1 grow
+                      bg-white dark:bg-black border border-gray-25
+                      dark:border-gray-75
+                      rounded-md focus:outline-none focus:border-blue-75
+                      dark:focus:border-blue-25 shadow-md dark:shadow-black
+                  CLASSES
+              %>
+          </div>
+          <div class="flex flex-col grow">
+              <%= form.label :examination_type, t('bodyNodeExaminationType') %>
+              <%= form.select :examination_type,
+                          options_for_select(
+                              BodyExamination.examination_types
+                              .sort_by{|e| t(e[0])}
+                              .map{|k, v| [t(k).titleize, k]},
+                              form.object&.examination_type || ''),
+                          {},
+                          class: <<~CLASSES
+                              px-1 py-1 grow mb-2
+                              bg-white dark:bg-black border border-gray-25
+                              dark:border-gray-75
+                              rounded-md focus:outline-none focus:border-blue-75
+                              dark:focus:border-blue-25 shadow-md dark:shadow-black
+                              hover:cursor-pointer
+                              text-sm
+                          CLASSES
+                          %>
+              <%= form.label :examination_type_details, t('bodyNodeExaminationTypeDetails'), class: 'mb-2' %>
+              <%= form.text_field :examination_type_details, class: <<~CLASSES
+                      px-1 py-1 grow
+                      bg-white dark:bg-black border border-gray-25
+                      dark:border-gray-75
+                      rounded-md focus:outline-none focus:border-blue-75
+                      dark:focus:border-blue-25 shadow-md dark:shadow-black
+                  CLASSES
+              %>
+          </div>
+          <div class="flex flex-col ml-auto">
+              <%= form.label :points, t('bodyNodePoints') %>
+              <%= form.number_field :points, class: <<~CLASSES
+                  px-1 py-1 grow
+                  bg-white dark:bg-black border border-gray-25
+                  dark:border-gray-75
+                  rounded-md focus:outline-none focus:border-blue-75
+                  dark:focus:border-blue-25 shadow-md dark:shadow-black
+                  text-sm
+              CLASSES
+              %>
+          </div>
+      </div>
+  
+      <%= form.label :results, t('bodyNodeResults'), class: 'mb-2' %>
+      <%= form.rich_text_area :results, class: 'mb-4' %>
+  
+      <%= form.label :results_comment, t('bodyNodeResultsComment'), class: 'mb-2' %>
+      <%= form.rich_text_area :results_comment, class: 'mb-4' %>
+  
+      <%= form.label :examination_type_comment, t('bodyNodeExaminationTypeComment'), class: 'mb-2' %>
+      <%= form.rich_text_area :examination_type_comment, class: 'mb-4' %>
+      <%= button_tag name: 'commit',
+              class: 'text-sm px-2 py-1 rounded-md bg-blue-100
+                      text-white shadow-md dark:shadow-black mb-4' do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+          </svg>
+          <%= submitString %>
+      <% end %>
+  </div>
+<% end %>

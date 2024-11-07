@@ -1,0 +1,7 @@
+<h1>Editing diagnostic type</h1>
+
+<%= turbo_frame_tag 'modal' do %>
+  <%= render "layouts/modal" do %>
+    <%= render "form", stepwise_diagnostic_node: @stepwise_diagnostic_node, diagnostic_type: @diagnostic_type, submitString: 'Diagnose aktualisieren' %>
+  <% end %>
+<% end %>

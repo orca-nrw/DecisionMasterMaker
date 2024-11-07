@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  position: 0
+  problem: Funktioniert dieser Step?
+  objective: Hoffentlich die obige Frage beantworten.
+  setting: Rails Codebase
+  actors: Der Programmierer, Sebastian
+  patient: alice
+  interactable_id: 1
+  interactable_type: TextVideoNode
+
+two:
+  id: 2
+  position: 1
+  problem: MyString
+  objective: MyText
+  setting: MyText
+  actors: MyText
+  patient: alice
+  interactable_id: 2
+  interactable_type: TextVideoNode

@@ -1,0 +1,101 @@
+<%= form_with(model: step) do |form| %>
+  <% if step.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(step.errors.count, "error") %> prohibited this step from being saved:</h2>
+
+      <ul>
+        <% step.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <fieldset class="flex flex-col mb-4" data-controller="accordion">
+      <div class="py-2 flex justify-between items-center border-b border-gray-25 dark:border-gray-75 hover:cursor-pointer" data-action="click->accordion#toggle">
+        <legend>
+          <h2 class="text-lg font-bold"><%= t('metadata') %></h2>
+        </legend>
+        <svg xmlns="http://www.w3.org/2000/svg" data-accordion-target="indicator" class="h-5 w-5 <%= 'rotate-180' unless step.problem.present? && step.objective.present? && step.setting.present? && step.actors.present? %>" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </div>
+      <div class="<%= 'hidden ' if step.problem.present? && step.objective.present? && step.setting.present? && step.actors.present? %>pl-2 mt-4 border-l-4 border-blue-100" data-accordion-target="body">
+        <div class="mb-4 flex flex-col">
+          <%= form.label :status, t('stepStatus'), class: 'mb-2' %>
+          <%= form.select :status,
+                Step.statuses.keys, {},
+                class: <<~CLASSES
+                  p-default bg-white dark:bg-black border border-gray-25
+                  dark:border-gray-75
+                  rounded-md focus:outline-none focus:border-blue-75
+                  dark:focus:border-blue-25 shadow-md dark:shadow-black
+                CLASSES
+                %>
+        </div>
+        <div class="mb-4 flex gap-2 items-center">
+            <%= form.check_box :casefile %>
+            <%= form.label :casefile, t('stepCasefile') %>
+        </div>
+        <div class="mb-4 flex flex-col">
+          <%= form.label :problem, t('stepProblem'), class: 'mb-2' %>
+          <%= form.text_field :problem, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+          CLASSES
+          %>
+        </div>
+        <div class="mb-4 flex flex-col">
+          <%= form.label :objective, t('stepObjective'), class: 'mb-2' %>
+          <%= form.text_area :objective, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+          CLASSES
+          %>
+        </div>
+        <div class="mb-4 flex flex-col">
+          <%= form.label :setting, t('stepSetting'), class: 'mb-2' %>
+          <%= form.text_area :setting, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+          CLASSES
+          %>
+        </div>
+        <div class="mb-4 flex flex-col">
+          <%= form.label :actors, t('stepActors'), class: 'mb-2' %>
+          <%= form.text_area :actors, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+          CLASSES
+          %>
+        </div>
+        <%= form.submit 'Metadaten aktualisieren', class: 'p-default btn-primary' %>
+
+	<div class="mt-4 p-4 bg-transparent border-2 border-red-100 text-red-100 rounded-md" data-controller="confirm unlock" data-confirm-message-value="Schritt wirklich löschen?">
+	  <span class="text-sm font-bold">Schritt löschen</span>
+	  <label class="block mb-2 text-sm flex items-center gap-1" for="unlock">
+	    <input id="unlock" name="unlock" type="checkbox" value="0" data-action="unlock#unlock" />
+	    <span>Ich weiß, dass diese Aktion unwiderruflich ist</span>
+	  </label>
+	  <div class="min-h-10 flex justify-center items-center unlockable locked" data-unlock-target="locked">
+	    <%= link_to step_path(@step), data: { action: 'click->confirm#confirmation', turbo_method: :delete }, class: "text-white bg-red-100 rounded-md p-2 hover:cursor-pointer" do %>
+	      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+		<path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+	      </svg>
+	      Schritt final löschen
+	    <% end %>
+	  </div>
+
+      </div>
+    </fieldset>
+  </div>
+<% end %>

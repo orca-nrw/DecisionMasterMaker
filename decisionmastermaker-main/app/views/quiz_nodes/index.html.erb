@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Quiz nodes</h1>
+
+<div id="quiz_nodes">
+  <% @quiz_nodes.each do |quiz_node| %>
+    <%= render quiz_node %>
+    <p>
+      <%= link_to "Show this quiz node", quiz_node %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New quiz node", new_quiz_node_path %>

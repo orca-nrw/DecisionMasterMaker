@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @anamnesis_question %>
+
+<div>
+  <%= link_to "Edit this anamnesis question", edit_anamnesis_question_path(@anamnesis_question) %> |
+  <%= link_to "Back to anamnesis questions", anamnesis_questions_path %>
+
+  <%= button_to "Destroy this anamnesis question", @anamnesis_question, method: :delete %>
+</div>

@@ -1,0 +1,5 @@
+<h1>Editing quiz answer</h1>
+
+<%= turbo_frame_tag @quiz_answer do %>
+  <%= render "form", quiz_node: @quiz_node, quiz_answer: @quiz_answer, submitString: t('quizNodeEditString') %>
+<% end %>

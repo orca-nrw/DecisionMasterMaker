@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @text_video_node %>
+
+<div>
+  <%= link_to "Edit this text video node", edit_text_video_node_path(@text_video_node) %> |
+  <%= link_to "Back to text video nodes", text_video_nodes_path %>
+
+  <%= button_to "Destroy this text video node", @text_video_node, method: :delete %>
+</div>

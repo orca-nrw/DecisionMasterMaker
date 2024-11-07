@@ -1,0 +1,14 @@
+<h1>Editing body examination</h1>
+
+<%= turbo_frame_tag 'modal' do %>
+  <%= render "layouts/modal" do %>
+    <%= render "form", body_node: @body_node, body_examination: @body_examination, submitString: 'Untersuchung aktualisieren' %>
+  <% end %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this body examination", @body_examination %> |
+  <%= link_to "Back to body examinations", body_examinations_path %>
+</div>

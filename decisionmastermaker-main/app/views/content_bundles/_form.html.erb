@@ -1,0 +1,54 @@
+<%= form_with(model: content_bundle) do |form| %>
+  <% if content_bundle.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(content_bundle.errors.count, "error") %> prohibited this content_bundle from being saved:</h2>
+
+      <ul>
+        <% content_bundle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col">
+    <%= form.label :title, 'Name', class: <<~CLASSES
+                    inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                    font-semibold
+                    CLASSES
+                    %>
+    <%= form.text_field :title, class: <<~CLASSES
+                        p-default mb-4 bg-white dark:bg-black border border-gray-25
+                        dark:border-gray-75
+                        rounded-md focus:outline-none focus:border-blue-75
+                        dark:focus:border-blue-25 shadow-md dark:shadow-black
+                        CLASSES
+                        %>
+    <%= form.label :contact, 'Kontakt E-Mail-Addresse', class: <<~CLASSES
+                    inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                    font-semibold
+                    CLASSES
+                    %>
+    <%= form.text_field :contact, class: <<~CLASSES
+                        p-default mb-4 bg-white dark:bg-black border border-gray-25
+                        dark:border-gray-75
+                        rounded-md focus:outline-none focus:border-blue-75
+                        dark:focus:border-blue-25 shadow-md dark:shadow-black
+                        CLASSES
+                        %>
+    <%= form.collection_check_boxes :patient_ids,
+                                    Patient.all.sort_by { |p| p.title},
+                                    :id,
+                                    :title do |b| %>
+      <div class="flex items-center gap-2">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+    <% end %>
+    <%= form.collection_select :tutorial_id, Patient.all, :id, :title, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit 'Bundle anlegen', class: 'p-default btn-primary shadow-md dark:shadow-black' %>
+  </div>
+<% end %>

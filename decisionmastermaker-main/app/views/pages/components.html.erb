@@ -1,0 +1,36 @@
+<h1 class="text-2xl font-bold mb-4">Component Index</h1>
+
+<%= render 'component', title: 'React Test', desc: 'Simple React Component Test' do %>
+    <%= component 'ReactTest', a: 'Prop A' %>
+<% end %>
+
+<%= render 'component', title: 'TextVideoNode', desc: 'A Component that displays text, optionally accompied by a video player' do %>
+    <%= component 'TextVideoNode', video: 'video', content: 'Lorem Ipsum Dolor Sit' %>
+<% end %>
+
+<%= render 'component', title: 'FuseNode', desc: 'Autocompleted interrogation Node' do %>
+    <%= component 'FuseNode' %>
+<% end %>
+
+<%= render 'component', title: 'QuizNode', desc: 'Single- and Multiple Choice Quiz' do %>
+    <%= component 'QuizNode', question: 'Oranges are...?', messages: { noAnswersSelected: 'Select at least one answer!' }, multipleChoice: true, answers: [{ text: 'Blue', points: 0, explanation: 'They aren\'t!' }, {text: 'Orange', points: 1, explanation: 'Indeed.'}, {text: 'Tasty!', points: 1, explanation: 'That\'s right!'}, {text: 'Disgusting', points: 0, explanation: 'They aren\'t!'}] %>
+<% end %>
+
+<%= render 'component', title: 'BodyNode', desc: '3D Body Inspection (HEAVILY wip)' do %>
+    <%= component 'BodyNode',
+        model: ActionController::Base.helpers.asset_path('girl.gltf'),
+        examinations: [
+        {
+          location: I18n.t('head'),
+          location_details: 'Kopfhaut',
+          examination_type: I18n.t('inspection'),
+          examination_type_details: '',
+          examination_type_comment: '',
+          results: 'Die Kopfhaut ist leicht rötlich',
+          results_comment: 'Es ist ein Sonnenbrand!'
+        }
+      ],
+      messages: {
+      },
+      number: 99 %>
+<% end %>

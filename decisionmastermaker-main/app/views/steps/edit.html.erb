@@ -1,0 +1,78 @@
+<%= turbo_stream_from @step %>
+
+<div class="relative" data-controller="preview">
+<h1 class="text-2xl font-bold mb-4">Step bearbeiten</h1>
+<div class="absolute right-2 top-2">
+  <button data-action="click->preview#fullscreen">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
+    </svg>
+  </button>
+  <button data-action="click->preview#popOut">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+      <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+    </svg>
+  </button>
+</div>
+
+<div class="flex flex-wrap gap-4 portrait:flex-col">
+    <div class="grow max-w-3xl">
+        <%= turbo_frame_tag dom_id(@step) do %>
+            <%= render "form", step: @step %>
+        <% end %>
+        
+        <h2 class="text-lg font-bold"><%= t(@step.interactable_type) %> bearbeiten</h2>
+        <%= turbo_frame_tag dom_id(@step.interactable, :edit), src: edit_polymorphic_path(@step.interactable) %>
+        
+        <h2 class="text-lg font-bold">NKLM Lernziele</h2>
+        <span class="block mb-2 text-sm text-gray-75 dark:text-gray-25 font-semibold">
+            <%= t('stepNklmLinks')  %>
+        </span>
+        <ul id="nklm-links" class="mb-4">
+            <%= render @step.nklm_links %>
+        </ul>
+        <%= link_to(
+                new_step_nklm_link_path(step_id: @step.id),
+                data: {
+                    turbo_frame: 'modal'
+                },
+                class: 'inline-block p-default btn-primary shadow-md mb-4'
+            ) do
+        %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+            <%= t('stepNklmNew') %>
+        <% end %>
+        
+        <h2 class="text-lg font-bold"><%= t('attachments')  %></h2>
+        <span class="block mb-2 text-sm text-gray-75 dark:text-gray-25 font-semibold">
+            <%= t('attachments')  %>
+        </span>
+        <ul id="attachments" class="mb-4">
+            <%= render @step.attachments %>
+        </ul>
+        <%= link_to(
+                new_attachment_path(
+                    attachable_type: Step,
+                    attachable_id: @step.id
+                ),
+                data: {
+                    turbo_frame: 'modal'
+                },
+                class: %w[inline-block p-default btn-primary shadow-md]
+            ) do
+        %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <%= t('attachmentNew') %>
+        <% end %>
+    </div>
+    <div class="basis-96 grow shrink-0 p-4 rounded-lg antialiased text-black bg-gray-10 dark:text-white
+        dark:bg-gray-90" data-preview-target="preview">
+        <%= render "step", step: @step %>
+    </div>
+</div>
+</div>

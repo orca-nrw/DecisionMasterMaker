@@ -1,0 +1,17 @@
+<div class="mx-auto prose dark:prose-invert">
+  <h1>Decision&shy;master&shy;maker</h1>
+  <p>
+    <%= proseify do %>
+      Dies ist eine Vorabversion des Autorenwerkzeugs für
+      Decision&shy;master.
+    <% end %>
+  </p>
+  <h2>Wo fange ich an?</h2>
+  <p class="pl-4 border-l-4 border-blue-100 p-default bg-blue-10 dark:bg-blue-100/10">
+    Existiert Ihr Fall noch nicht, können Sie ihn in der
+    <%= link_to 'Patientenübersicht', patients_path %> hinzufügen,
+    andernfalls klicken Sie den Stift um den Fall zu bearbeiten.
+    In der Fallansicht können Sie dann neue Schritte hinzufügen und die
+    Schritte mit einer Vorschau ausgestalten.
+  </p>
+</div>

@@ -1,0 +1,28 @@
+<%= form.label :tries, t('fuseNodeTries') %>
+<%= form.number_field :tries, class: <<~CLASSES
+                px-1 py-1 grow
+                bg-white dark:bg-black border border-gray-25
+                dark:border-gray-75
+                rounded-md focus:outline-none focus:border-blue-75
+                dark:focus:border-blue-25 shadow-md dark:shadow-black
+                text-sm
+            CLASSES
+ %>
+<%= fields_for :anamnesis_question do |ff| %>
+    <%= render 'anamnesis_questions/new', step: step, form: ff %>
+<% end %>
+<fieldset class="flex flex-col mb-4" data-controller="accordion">
+    <div class="py-2 flex justify-between items-center border-b border-gray-25 dark:border-gray-75 hover:cursor-pointer" data-action="click->accordion#toggle">
+    <legend>
+        <h2 class="text-lg font-bold"><%= t('fuseNodeQuestions') %>:</h2>
+    </legend>
+    <svg xmlns="http://www.w3.org/2000/svg" data-accordion-target="indicator" class="h-5 w-5 <%= 'rotate-180' unless step.problem.present? && step.objective.present? && step.setting.present? && step.actors.present? %>" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+    </div>
+    <div class="pl-2 mt-4 border-l-4 border-blue-100" data-accordion-target="body">
+        <div id="anamnesis-questions">
+            <%= render step.interactable.anamnesis_questions %>
+        </div>
+    </div>
+</fieldset>

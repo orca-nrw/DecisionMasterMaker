@@ -1,0 +1,36 @@
+<div class="flex flex-col h-full overflow-hidden border rounded-lg shadow-lg border-gray-25" data-controller="preview localstorage">
+  <div class="flex items-center px-3 pt-3 pb-2 bg-white dark:bg-black">
+    <button class="p-1 rounded-md hover:bg-blue-100 hover:text-white" data-action="click->preview#fullscreen">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 110-2h4a1 1 0 011 1v4a1 1 0 11-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 112 0v1.586l2.293-2.293a1 1 0 011.414 1.414L6.414 15H8a1 1 0 110 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 110-2h1.586l-2.293-2.293a1 1 0 011.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd" />
+      </svg>
+    </button>
+    <button class="p-1 mr-auto rounded-md hover:bg-blue-100 hover:text-white" data-action="click->preview#popOut">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
+        <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
+      </svg>
+    </button>
+    <span class="inline-block mr-4 font-bold justify-self-center">
+      <%= @patient.title %> Preview
+    </span>
+    <button class="p-1 ml-auto rounded-md hover:bg-blue-100 hover:text-white" data-action="click->localstorage#clear">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+      </svg>
+    </button>
+  </div>
+  <div class="relative max-h-screen grow" data-preview-target="preview">
+    <%= component 'App',
+                  render(
+                    template: 'content_bundles/show',
+                    formats: :json,
+                    locals: {
+                        content_bundle: ContentBundle.new(
+                            title: "#{@patient.title} Test",
+                            patients: [@patient],
+                            contact: "test@example.com"
+                        )
+                    })%>
+  </div>
+</div>

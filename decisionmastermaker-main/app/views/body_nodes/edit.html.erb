@@ -1,0 +1,12 @@
+<h1>Editing body node</h1>
+
+<%= turbo_frame_tag dom_id(@body_node, :edit) do %>
+  <%= render "form", body_node: @body_node %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this body node", @body_node %> |
+  <%= link_to "Back to body nodes", body_nodes_path %>
+</div>

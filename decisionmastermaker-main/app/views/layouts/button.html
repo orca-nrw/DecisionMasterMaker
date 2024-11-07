@@ -1,0 +1,66 @@
+<button id="btn">Append</button>
+<button id="clr">Clear</button>
+<ul id="list">
+  <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, tenetur. Eveniet, nesciunt vitae ad ipsam sed sint harum magnam maxime nihil molestias placeat aliquam vero molestiae veniam tempora modi eos!a</li>
+</ul>
+
+* {
+  box-sizing: border-box;
+}
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 125%;
+  font-family: sans-serif;
+}
+
+ul {
+  width: 40ex;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: .25rem;
+}
+
+@keyframes fade-in {
+  0% {
+    height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  100% {
+    height: 2.25rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
+}
+
+li {
+  background: blue;
+  color: white;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  animation: fade-in .25s;
+  transition: all;
+}
+
+const list = document.getElementById('list');
+const btnAdd = document.getElementById('btn');
+const btnClear = document.getElementById('clr');
+
+btnAdd.addEventListener('click', (evt) => {
+  let li = document.createElement('li');
+  li.innerText = 'Foobar';
+  list.prepend(li);
+});
+
+btnClear.addEventListener('click', (evt) => {
+  while (list.firstChild) {
+    list.firstChild.remove();
+  }
+});

@@ -1,0 +1,7 @@
+<% if step && step.interactable %>
+    <div class="h-full" id="<%= dom_id step %>">
+        <div id="<%= dom_id step.interactable %>">
+            <%= component step[:interactable_type], step.interactable.props %>
+        </div>
+    </div>
+<% end %>

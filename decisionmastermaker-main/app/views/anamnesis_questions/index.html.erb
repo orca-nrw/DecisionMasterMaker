@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Anamnesis questions</h1>
+
+<div id="anamnesis_questions">
+  <% @anamnesis_questions.each do |anamnesis_question| %>
+    <%= render anamnesis_question %>
+    <p>
+      <%= link_to "Show this anamnesis question", anamnesis_question %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New anamnesis question", new_anamnesis_question_path %>

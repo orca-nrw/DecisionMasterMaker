@@ -1,0 +1,12 @@
+<h1>Editing self evaluation node</h1>
+
+<%= turbo_frame_tag dom_id(@self_evaluation_node, :edit) do %>
+  <%= render "form", self_evaluation_node: @self_evaluation_node %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this self evaluation node", @self_evaluation_node %> |
+  <%= link_to "Back to self evaluation nodes", self_evaluation_nodes_path %>
+</div>

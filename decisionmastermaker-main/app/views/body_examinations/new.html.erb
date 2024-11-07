@@ -1,0 +1,11 @@
+<h1>New body examination</h1>
+
+<%= turbo_frame_tag 'new-body-examination' do %>
+  <%= render "form", body_node: @body_node, body_examination: @body_examination, submitString: 'Untersuchung hinzufügen' %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to body examinations", body_examinations_path %>
+</div>

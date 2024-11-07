@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['DECISIONMASTERMAKER_DATABASE_USER'] %>
+  password: <%= ENV['DECISIONMASTERMAKER_DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: decisionmastermaker_development
+
+test:
+  <<: *default
+  database: decisionmastermaker_test
+
+production:
+  <<: *default
+  host:
+  username:
+  database:
+  password:
+  sslmode: require

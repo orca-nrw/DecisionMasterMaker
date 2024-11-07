@@ -1,0 +1,12 @@
+<h1>Editing anamnesis question</h1>
+
+<%= turbo_frame_tag @anamnesis_question do %>
+  <%= render 'form', fuse_node: @fuse_node, anamnesis_question: @anamnesis_question, submitString: 'Frage aktualisieren' %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this anamnesis question", @anamnesis_question %> |
+  <%= link_to "Back to anamnesis questions", anamnesis_questions_path %>
+</div>

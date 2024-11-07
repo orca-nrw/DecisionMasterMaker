@@ -1,0 +1,29 @@
+<%= render "layouts/modal" do %>
+  <article>
+    <h1 class="text-4xl"><%= @attachment.title %></h1>
+
+    <span class="inline-block mb-2 text-sm text-gray-75 dark:text-gray-25 font-semibold">
+      Angehängte Dateien
+    </span>
+    <ul class="mb-4 grid md:grid-cols-2 lg:grid-cols-4 gap-2">
+      <% @attachment.files.each do |file| %>
+	<li class="p-4 relative flex justify-center items-center rounded-lg hover:bg-gray-25 dark:hover:bg-gray-75/50">
+	  <% if file.representable? %>
+	    <%= link_to rails_blob_path(file, disposition: "attachment"), class: %[after:absolute after:inset-0] do %>
+	      <%= image_tag file.representation(resize_to_limit: [200, 200]), class: %w[max-w-full] %>
+	    <% end %>
+	  <% else %>
+	    <%= link_to rails_blob_path(file, disposition: "attachment") do %>
+	      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+		<path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+	      </svg>
+	      Download <%= file.filename %>
+	    <% end %>
+	  <% end %>
+	</li>
+      <% end %>
+    </ul>
+
+    <%= @attachment.content %>
+  </article>
+<% end %>

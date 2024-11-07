@@ -1,0 +1,5 @@
+<%= render "layouts/modal" do %>
+    <h1 class="text-2xl font-bold mb-4"><%= t('attachmentNew') %></h1>
+
+    <%= render "form", attachment: @attachment, btn_text: t('attachmentNew') %>
+<% end %>

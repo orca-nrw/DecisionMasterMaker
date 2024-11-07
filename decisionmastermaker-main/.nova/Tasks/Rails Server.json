@@ -1,0 +1,7 @@
+{
+  "extension" : {
+    "identifier" : "com.tommasonegri.Rails",
+    "name" : "Ruby on Rails"
+  },
+  "extensionTemplate" : "railsServer"
+}

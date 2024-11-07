@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @self_evaluation_node %>
+
+<div>
+  <%= link_to "Edit this self evaluation node", edit_self_evaluation_node_path(@self_evaluation_node) %> |
+  <%= link_to "Back to self evaluation nodes", self_evaluation_nodes_path %>
+
+  <%= button_to "Destroy this self evaluation node", @self_evaluation_node, method: :delete %>
+</div>

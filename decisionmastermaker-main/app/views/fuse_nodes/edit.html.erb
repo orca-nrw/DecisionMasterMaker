@@ -1,0 +1,12 @@
+<h1>Editing fuse node</h1>
+
+<%= turbo_frame_tag dom_id(@fuse_node, :edit) do %>
+  <%= render "form", fuse_node: @fuse_node %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this fuse node", @fuse_node %> |
+  <%= link_to "Back to fuse nodes", fuse_nodes_path %>
+</div>

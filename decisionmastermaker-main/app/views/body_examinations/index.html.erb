@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Body examinations</h1>
+
+<%= turbo_frame_tag 'body-examinations' do %>
+  <table
+      data-controller="body-examinations-table"
+      data-body-examinations-table-examinations-value="<%= @body_examinations.to_json %>"
+      data-body-examinations-table-sort-by-value="location"
+      data-body-examinations-table-order-value="true"
+  >
+      <thead>
+          <tr>
+              <th data-action="click->body-examinations-table#sortLocation click->body-examinations-table#rerender"
+                  class="select-none hover:cursor-pointer pr-2">
+                  <%= t('bodyNodeLocation') %>
+              </th>
+              <th data-action="click->body-examinations-table#sortExaminationType click->body-examinations-table#rerender"
+                  class="select-none hover:cursor-pointer pr-2">
+                  <%= t('bodyNodeExaminationType') %>
+              </th>
+              <th data-action="click->body-examinations-table#sortPoints click->body-examinations-table#rerender"
+                  class="select-none hover:cursor-pointer pr-2">
+                  <%= t('bodyNodePoints') %>
+              </th>
+              <th>
+                  <%= t('actions') %>
+              </th>
+          </tr>
+      </thead>
+      <tbody data-body-examinations-table-target="list">
+      </tbody>
+  </table>
+<% end %>
+
+<%= link_to "New body examination", new_body_examination_path %>

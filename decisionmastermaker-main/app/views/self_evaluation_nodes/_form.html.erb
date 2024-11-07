@@ -1,0 +1,26 @@
+<%= form_with(model: self_evaluation_node) do |form| %>
+  <% if self_evaluation_node.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(self_evaluation_node.errors.count, "error") %> prohibited this self_evaluation_node from being saved:</h2>
+
+      <ul>
+        <% self_evaluation_node.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4 flex flex-col gap-2">
+    <%= form.label :prompt, 'Fragestellung', style: "display: block" %>
+    <%= form.rich_text_area :prompt %>
+    <%= form.label :sampleSolution, 'Musterlösung', style: "display: block" %>
+    <%= form.rich_text_area :sampleSolution %>
+    <%= form.label :score, 'Erreichbare Punktzahl', style: "display: block" %>
+    <%= form.number_field :score, class: %w[p-default bg-white dark:bg-black border border-gray-25 dark:border-gray-75 rounded-md focus:outline-none focus:border-blue-75 dark:focus:border-blue-25 shadow-md dark:shadow-black] %>
+  </div>
+
+  <div>
+    <%= form.submit class: %w[inline-block p-default btn-primary shadow-md mb-4] %>
+  </div>
+<% end %>

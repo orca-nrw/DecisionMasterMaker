@@ -1,0 +1,28 @@
+<table
+    data-controller="body-examinations-table"
+    data-body-examinations-table-examinations-value="<%= body_examinations.to_json %>"
+    data-body-examinations-table-sort-by-value="location"
+    data-body-examinations-table-order-value="true"
+>
+    <thead>
+        <tr>
+            <th data-action="click->body-examinations-table#sortLocation click->body-examinations-table#rerender"
+                class="select-none hover:cursor-pointer">
+                <%= t('bodyNodeLocation') %>
+            </th>
+            <th data-action="click->body-examinations-table#sortExaminationType click->body-examinations-table#rerender"
+                class="select-none hover:cursor-pointer">
+                <%= t('bodyNodeExaminationType') %>
+            </th>
+            <th data-action="click->body-examinations-table#sortPoints click->body-examinations-table#rerender"
+                class="select-none hover:cursor-pointer">
+                <%= t('bodyNodePoints') %>
+            </th>
+            <th>
+                <%= t('actions') %>
+            </th>
+        </tr>
+    </thead>
+    <tbody data-body-examinations-table-target="list">
+    </tbody>
+</table>

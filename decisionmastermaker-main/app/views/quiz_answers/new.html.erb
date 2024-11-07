@@ -1,0 +1,12 @@
+<h1>New quiz answer</h1>
+
+<%= turbo_frame_tag 'new-quiz-answer' do %>
+  <h2 class="text-lg font-bold">Antwort hinzufügen</h2>
+  <%= render "form", quiz_node: @quiz_node, quiz_answer: @quiz_answer, submitString: 'Antwort hinzufügen' %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to quiz answers", quiz_answers_path %>
+</div>

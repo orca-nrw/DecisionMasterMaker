@@ -1,0 +1,90 @@
+de:
+  boy: Junge
+  girl: Mädchen
+  hello: "Hallo Welt"
+  edit: Bearbeiten
+  delete: Löschen
+  stepEdit: Bearbeiten
+  stepDeleteConfirm: Schritt löschen?
+  todo: ToDo
+  doing: In Arbeit
+  done: Fertig
+  metadata: Metadaten
+  stepStatus: Zustand
+  stepCasefile: Inhalt in Fallakte übernehmen
+  stepActors: Akteure
+  stepSetting: Setting/Kommentare
+  stepProblem: Überschrift
+  stepObjective: Lernziel
+  stepNklmLinks: Links zu NKLM Lernzielen
+  stepNklmNew: NKLM Lernziel hinzufügen
+  stepNklmEdit: NKLM Lernziel ändern
+  stepNklmDelete: NKLM Lernziel entfernen
+  textVideoNodeVideo: Video
+  textVideoNodeText: Text
+  fuseNodeTries: Anzahl beantworteter Fragen
+  fuseNodeNew: Neue Anamnesefrage
+  fuseNodeDeleteConfirm: Frage löschen?
+  fuseNodeQuestion: Frage
+  fuseNodeAnswer: Antwort
+  fuseNodeReasoning: Begründung
+  fuseNodeTags: Stichworte (mit Komma getrennt)
+  fuseNodePoints: Punktzahl
+  fuseNodeQuestionSubmit: Frage hinzufügen
+  fuseNodeQuestionUpdate: Frage aktualisieren
+  fuseNodeQuestions: Alle Fragen
+  quizNodeQuestion: Frage
+  quizNodeNew: Neue Antwort
+  quizNodeMultiple: Multiple Choice
+  quizNodeText: Antworttext
+  quizNodeCorrect: Richtige Auswahl
+  quizNodeExplanation: Erklärung
+  quizNodeEditString: Antwort aktualisieren
+  quizNodeSubmitString: Antwort hinzufügen
+  quizNodeAnswers: Alle Antworten
+  bodyNodeTries: Anzahl möglicher Untersuchungen
+  bodyNodeNew: Neue Untersuchung
+  bodyNodeExaminations: Untersuchungen
+  bodyNodeLocation: Körperregion
+  bodyNodeLocationDetails: Körperregion Details
+  bodyNodeExaminationType: Untersuchungstechnik
+  bodyNodeExaminationTypeDetails: Untersuchungstechnik Details
+  bodyNodeExaminationTypeComment: Kommentar zur Untersuchungstechnik
+  bodyNodeResults: Befund
+  bodyNodeResultsComment: Kommentar zum Patientenbefund
+  bodyNodePoints: Punkte
+  auscultation: Auskultation
+  complex: Komplex
+  inspection: Inspektion
+  light_reaction: Lichtreaktion
+  meningitis: Meningitis
+  otoscopy: Otoskopie
+  palpation: Palpation
+  percussion: Perkussion
+  smell: Geruch
+  after: After
+  ears: Ohren
+  eyes: Augen
+  fingers: Fingerspitzen
+  genital: Genital
+  head: Kopf
+  heart: Herz
+  lungs: Lunge
+  miscellaneous: Sonstiges
+  mouth: Mund, Lippen
+  pulse: Puls
+  throat: Hals, Rachen
+  visceral_abdominal: Viszerales Abdomen
+  attachment: Zusatzmaterial für Fallakte
+  attachments: Zusatzmaterialien für Fallakte
+  attachmentNew: Zusatzmaterial hinzufügen
+  attachmentEdit: "%{attachment_name} bearbeiten"
+  attachmentTitle: Zusatzmaterialtitel
+  attachmentFiles: Dateianhänge
+  attachmentContent: Zusatzmaterial Beschreibung
+  TextVideoNode: Text-/Videoknoten
+  FuseNode: Anamneseknoten
+  QuizNode: Quizknoten
+  BodyNode: Untersuchungsknoten
+  StepwiseDiagnosticNode: Stufenuntersuchung
+  SelfEvaluationNode: Selbstkontrollknoten

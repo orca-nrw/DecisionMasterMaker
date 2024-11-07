@@ -1,0 +1,22 @@
+<%= render "layouts/modal" do %>
+  <%= form_for [step, nklm_link] do |form| %>
+    <% if nklm_link.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(nklm_link.errors.count, "error") %> prohibited this nklm_link from being saved:</h2>
+  
+        <ul>
+          <% nklm_link.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= form.text_field :title %>
+    <%= form.text_field :nklm_url %>
+  
+    <div>
+      <%= form.submit btn_text %>
+    </div>
+  <% end %>
+<% end %>

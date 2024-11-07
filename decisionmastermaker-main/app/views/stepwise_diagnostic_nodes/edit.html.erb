@@ -1,0 +1,20 @@
+<h1>Editing Stepwise Diagnostic</h1>
+
+<%= turbo_frame_tag dom_id(@stepwise_diagnostic_node, :edit) do %>
+  <%= render "form", stepwise_diagnostic_node: @stepwise_diagnostic_node %>
+  <%# grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6 %>
+  <div id="diagnostic-types" class="grid grid-cols-<%= (@stepwise_diagnostic_node.step_count or 0) + 1 %>">
+    <span class="font-bold">Auswahl</span>
+    <% (@stepwise_diagnostic_node.step_count or 0).times do |i| %>
+      <span class="font-bold">Punkte in Schritt <%= i %></span>
+    <% end %>
+    <%= render @stepwise_diagnostic_node.diagnostic_types.order(:title) %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Show this Stepwise Diagnostic", @stepwise_diagnostic_node %> |
+  <%= link_to "Back to Stepwise Diagnostics", stepwise_diagnostic_nodes_path %>
+</div>

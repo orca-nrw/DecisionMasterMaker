@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @quiz_node %>
+
+<div>
+  <%= link_to "Edit this quiz node", edit_quiz_node_path(@quiz_node) %> |
+  <%= link_to "Back to quiz nodes", quiz_nodes_path %>
+
+  <%= button_to "Destroy this quiz node", @quiz_node, method: :delete %>
+</div>

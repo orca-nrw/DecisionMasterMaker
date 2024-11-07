@@ -1,0 +1,9 @@
+one:
+  record: one (TextVideoNode)
+  name: content
+  body: <p>In a <i>million</i> stars!</p>
+
+two:
+  record: two (TextVideoNode)
+  name: content
+  body: <p>In 2 <i>million</i> stars!</p>

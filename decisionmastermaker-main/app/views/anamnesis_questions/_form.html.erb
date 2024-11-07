@@ -1,0 +1,63 @@
+<%= form_with(model: [ fuse_node, anamnesis_question]) do |form| %>
+  <% if anamnesis_question.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(anamnesis_question.errors.count, "error") %> prohibited this anamnesis_question from being saved:</h2>
+
+      <ul>
+        <% anamnesis_question.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="flex flex-col">
+    <%= form.label :question, t('fuseNodeQuestion'), class: 'mb-2' %>
+    <%= form.text_field :question, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75 mb-4
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+        CLASSES
+    %>
+    <%= form.label :answer, t('fuseNodeAnswer'), class: 'mb-2' %>
+    <%= form.text_area :answer, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75 mb-4
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+        CLASSES
+    %>
+        <%= form.label :reasoning, t('fuseNodeReasoning'), class: 'mb-2' %>
+    <%= form.text_area :reasoning, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75 mb-4
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+        CLASSES
+    %>
+    <%= form.label :tags, t('fuseNodeTags'), class: 'mb-2' %>
+    <%= form.text_field :tags, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75 mb-4
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+        CLASSES
+    %>
+    <%= form.label :points, t('fuseNodePoints'), class: 'mb-2' %>
+    <%= form.number_field :points, class: <<~CLASSES
+          p-default bg-white dark:bg-black border border-gray-25
+          dark:border-gray-75 mb-4
+          rounded-md focus:outline-none focus:border-blue-75
+          dark:focus:border-blue-25 shadow-md dark:shadow-black
+        CLASSES
+    %>
+    <%= button_tag name: 'commit', class: %w[text-sm px-2 py-1 rounded-md
+            bg-blue-100 text-white shadow-md dark:shadow-black mb-4] do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+        </svg>
+        <%= submitString %>
+    <% end %>
+</div>
+<% end %>

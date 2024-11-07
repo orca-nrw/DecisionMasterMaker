@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 class="mb-4 text-2xl font-bold">Content Bundles</h1>
+
+<% unless ContentBundle.count == 0 %>
+<div class="mb-6 overflow-x-auto bg-white rounded-lg shadow-md ring-1 ring-gray-25 dark:ring-gray-75 dark:shadow-black dark:bg-black">
+  <table class="w-full">
+    <thead>
+      <tr>
+        <th class="px-4 text-left">Name</th>
+        <th class="px-4 text-left">Fälle</th>
+        <th class="px-4 text-left">Aktionen</th>
+      </tr>
+    </thead>
+    <tbody id="bundles">
+    <% @content_bundles.sort_by { |bundle| bundle.title }.each do |bundle| %>
+      <%= render bundle %>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+<% else %>
+<p class="px-4 mb-6 border-l-4 border-blue-100">
+  Noch keine Bundles angelegt!
+</p>
+<% end %>
+
+<%= link_to "Neues Bundle", new_content_bundle_path, class: <<~CLASSES
+            p-default shadow-md dark:shadow-black rounded-md bg-blue-100
+            text-white hover:cursor-pointer
+            CLASSES
+            %>

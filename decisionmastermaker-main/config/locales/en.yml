@@ -1,0 +1,72 @@
+en:
+  hello: "Hello World"
+  edit: Edit
+  delete: Delete
+  stepEdit: Edit
+  stepDeleteConfirm: Delete Step?
+  todo: ToDo
+  doing: In Progress
+  done: Done
+  metadata: Metadata
+  stepStatus: Status
+  stepCasefile: Add content to Casefile
+  stepActors: Actors
+  stepSetting: Setting
+  stepProblem: Headline
+  stepObjective: Goal
+  textVideoNodeVideo: Video
+  textVideoNodeText: Text
+  fuseNodeNew: New Anamnesis Question
+  fuseNodeDeleteConfirm: Delete Question?
+  fuseNodeQuestion: Question
+  fuseNodeAnswer: Answer
+  fuseNodeReasoning: Reasoning
+  fuseNodeTags: Tags (comma seperated)
+  fuseNodeQuestionSubmit: Add Question
+  fuseNodeQuestionUpdate: Update Question
+  fuseNodeQuestions: All Questions
+  quizNodeQuestion: Question
+  quizNodeNew: New Answer
+  quizNodeMultiple: Multiple Choice
+  quizNodeText: Answer Text
+  quizNodeCorrect: Correct
+  quizNodeExplanation: Explanation
+  quizNodeEditString: Update Answer
+  quizNodeSubmitString: Add Answer
+  quizNodeAnswers: All Answers
+  bodyNodeNew: New Examination
+  bodyNodeExaminations: Examinations
+  bodyNodeLocation: Location
+  bodyNodeLocationDetails: Location Details
+  bodyNodeExaminationType: Examination
+  bodyNodeExaminationTypeDetails: Examination Details
+  bodyNodeExaminationTypeComment: Examination Commentary
+  bodyNodeResults: Results
+  bodyNodeResultsComment: Results Commentary
+  bodyNodePoints: Points
+  auscultation: Auscultation
+  complex: Complex
+  inspection: Inspection
+  light_reaction: Light Reaction
+  meningitis: Meningitis
+  otoscopy: Otoskopy
+  palpation: Palpation
+  percussion: Percussion
+  smell: Smell
+  after: After
+  ears: Ears
+  eyes: Eyes
+  fingers: Fingertips
+  genital: Genitals
+  head: Head
+  heart: Heart
+  lungs: Lungs
+  miscellaneous: Miscellaneous
+  mouth: Mouth, Lips
+  pulse: Pulse
+  throat: Neck, Throat
+  visceral_abdominal: Visceral Abdomen
+  attachment: Additional Material for Casefile
+  attachments: Additional Materials for Casefile
+  attachmentNew: Add Additional Material
+  attachmentEdit: "Edit %{attachment_name}"

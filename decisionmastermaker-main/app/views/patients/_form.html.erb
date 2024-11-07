@@ -1,0 +1,57 @@
+<% if patient.errors.any? %>
+  <div style="color: red">
+    <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+    <ul>
+      <% patient.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="flex flex-col">
+  <%= form.label :title, 'Name', class: <<~CLASSES
+                  inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                  font-semibold
+                  CLASSES
+                  %>
+  <%= form.text_field :title, class: <<~CLASSES
+                      p-default mb-4 bg-white dark:bg-black border border-gray-25
+                      dark:border-gray-75
+                      rounded-md focus:outline-none focus:border-blue-75
+                      dark:focus:border-blue-25 shadow-md dark:shadow-black
+                      CLASSES
+                      %>
+  <%= form.label :gender, 'Grafik', class: <<~CLASSES
+                  inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                  font-semibold
+                  CLASSES
+                  %>
+          <%= form.select :gender, options_for_select(
+                              Patient.genders.sort_by{|g| t(g[0])}
+                                             .map{|k, v| [t(k).titleize, k]},
+                              form.object&.gender || ''),
+                          {},
+                          class: <<~CLASSES
+                              px-1 py-1 grow mb-2
+                              bg-white dark:bg-black border border-gray-25
+                              dark:border-gray-75
+                              rounded-md focus:outline-none focus:border-blue-75
+                              dark:focus:border-blue-25 shadow-md dark:shadow-black
+                              hover:cursor-pointer
+                              text-sm
+                          CLASSES
+                          %>
+
+
+  <div class="flex gap-2">
+    <%= form.check_box :skip %>
+    <%= form.label :skip, 'Nichtlineare Navigation', class: <<~CLASSES
+                    inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                    font-semibold
+                    CLASSES
+                    %>
+  </div>
+  <%= form.submit btn_text, class: 'p-default btn-primary shadow-md dark:shadow-black' %>
+</div>

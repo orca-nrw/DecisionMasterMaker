@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    font-size: 125%;
+}
+
+.p-default {
+    @apply px-4;
+    @apply py-2;
+}
+
+.btn-primary {
+    @apply rounded-md;
+    @apply bg-blue-100;
+    @apply text-white;
+    @apply hover:cursor-pointer;
+}
+
+.trix-button {
+  @apply !bg-white;
+}
+
+.toggle {
+  display: inline-block;
+  position: relative;
+  appearance: none;
+  width: 3em;
+  height: 1.75em;
+  border: 2px solid currentcolor;
+  border-radius: 999px;
+}
+
+.toggle::before {
+  border-radius: 999px;
+  position: absolute;
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: currentcolor;
+  pointer-events: none;
+  top: .25em;
+  left: .125em;
+  transition: .25s all;
+}
+.toggle:checked::before {
+  @apply bg-green-100;
+  
+  left: 1.5em;
+}
+.toggle:checked ~ label {
+  font-weight: bold;
+}
+
+.unlockable {
+    position: relative;
+    overflow: hidden;
+}
+
+.unlockable::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    bottom: -50%;
+    background: black;
+    background: url('Streifen Unten.svg');
+    transition: all 1s;
+}
+
+.unlockable::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    background: black;
+    background: url('Streifen Oben.svg');
+    transition: all 1s;
+}
+
+.locked {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.unlockable.locked::before {
+    top: 50%;
+    bottom: 0;
+}
+
+.unlockable.locked::after {
+    top: 0;
+    bottom: 50%;
+}
+
+.hide-arrows {
+  @apply appearance-none;
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+
+.hide-arrows::-webkit-inner-spin-button, 
+.hide-arrows::-webkit-outer-spin-button { 
+  display: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.notes .trix-button-group--file-tools {
+  display: none;
+}

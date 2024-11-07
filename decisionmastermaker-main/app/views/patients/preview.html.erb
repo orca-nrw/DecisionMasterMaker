@@ -1,0 +1,13 @@
+<div class="relative max-h-screen grow">
+    <%= component 'App',
+                  render(
+                    template: 'content_bundles/show',
+                    formats: :json,
+                    locals: {
+                        content_bundle: ContentBundle.new(
+                            title: "#{@patient.title} Test",
+                            patients: [@patient],
+                            contact: "test@example.com"
+                        )
+                    })%>
+</div>

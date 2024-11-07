@@ -1,0 +1,5 @@
+<h1 class="mb-4 text-2xl font-bold">Neue Patient*in</h1>
+
+<%= form_with(model: @patient) do |form| %>
+    <%= render "form", patient: @patient, btn_text: 'Patient*in erstellen', form: form %>
+<% end %>

@@ -1,0 +1,90 @@
+<%= turbo_stream_from @patient %>
+<h1 class="mb-4 text-2xl font-bold" data-controller="cache">Patient*in bearbeiten</h1>
+<%= turbo_frame_tag 'edit_form' do %>
+  <div class="flex flex-wrap gap-4 portrait:flex-col landscape:justify-center">
+    <div>
+      <%= form_with(model: @patient) do |form| %>
+        <%= render "form", patient: @patient, btn_text: 'Änderungen anwenden', form: form %>
+        <%= form.label :title, t('attachments'), class: <<~CLASSES
+                      inline-block mb-2 text-sm text-gray-75 dark:text-gray-25
+                      font-semibold
+                    CLASSES
+                %>
+      <% end %>
+      <ul id="attachments" class="mb-4">
+        <%= render @patient.attachments %>
+      </ul>
+      <%= link_to(
+            new_attachment_path(
+              attachable_type: Patient,
+              attachable_id: @patient.id
+            ),
+            data: { turbo_frame: 'modal' },
+            class: %w[p-default btn-primary shadow-md]
+          ) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 13h6m-3-3v6m5 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <%= t('attachmentNew') %>
+      <% end %>
+      <div class="p-4 mt-4 text-red-100 bg-transparent border-2 border-red-100 rounded-md" data-controller="confirm unlock" data-confirm-message-value="Patient*in wirklich löschen?">
+        <span class="text-sm font-bold">Patient*in löschen</span>
+        <label class="flex items-center gap-1 mb-2 text-sm" for="unlock">
+          <input id="unlock" name="unlock" type="checkbox" value="0" data-action="unlock#unlock" />
+          <span>Ich weiß, dass diese Aktion unwiderruflich ist</span>
+        </label>
+        <div class="flex items-center justify-center min-h-10 unlockable locked" data-unlock-target="locked">
+          <%= link_to @patient, data: { action: 'click->confirm#confirmation', turbo_method: :delete }, class: "text-white bg-red-100 rounded-md p-2 hover:cursor-pointer" do %>
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+            Patient*in final löschen
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="grow max-w-prose">
+      <div class="flex flex-wrap items-center mb-2">
+        <span class="mb-2 mr-2">
+          <h2 class="inline-block mb-2 text-sm font-semibold mr-1inline-block text-gray-75 dark:text-gray-25">
+            <%= t('steps') %>
+          </h2>
+          <span class="mr-1">(</span>
+          <span class="px-1 mr-1 text-sm text-white bg-red-100 rounded-lg">
+            <%= t('todo') %>
+          </span>
+          <span class="px-2 mr-1 text-sm text-black bg-yellow-100 rounded-lg">
+            <%= t('doing') %>
+          </span>
+          <span class="px-2 mr-1 text-sm text-white bg-green-100 rounded-lg">
+            <%= t('done') %>
+          </span>
+          <span>)</span>
+        </span>
+        <div class="flex mb-2 ml-auto grow">
+          <%= form_with(model: @patient) do |form| %>
+            <%= select_tag :nodeType,
+                       options_for_select(Step.node_types.map{ |type| [t(type), type]}),
+                   class: <<~CLASSES
+                     px-1 py-1 grow
+                     bg-white dark:bg-black border border-gray-25
+                     dark:border-gray-75
+                     rounded-l-md focus:outline-none focus:border-blue-75
+                     dark:focus:border-blue-25 shadow-md dark:shadow-black
+                     hover:cursor-pointer
+                     text-sm
+                     CLASSES
+                  %>
+            <%= button_tag name: 'commit', value: 'add-step',
+                   class: 'text-sm px-2 py-1 rounded-r-md bg-blue-100 text-white shadow-md dark:shadow-black' do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+              </svg>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <%= render 'steps', patient: @patient %>
+    </div>
+  </div>
+<% end %>

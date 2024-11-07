@@ -1,0 +1,50 @@
+<%= form_with(model: stepwise_diagnostic_node) do |form| %>
+  <% if stepwise_diagnostic_node.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(stepwise_diagnostic_node.errors.count, "error") %> prohibited this stepwise_diagnostic_node from being saved:</h2>
+
+      <ul>
+        <% stepwise_diagnostic_node.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="flex flex-col">
+    <%= form.label :prompt, 'Fragestellung' %>
+    <%= form.text_field :prompt, class: <<~CLASSES
+    p-default bg-white dark:bg-black border border-gray-25
+    dark:border-gray-75 mb-2
+    rounded-md focus:outline-none focus:border-blue-75
+    dark:focus:border-blue-25 shadow-md dark:shadow-black
+    CLASSES
+    %>
+
+    <%= form.label :button_prompt, 'Button Text' %>
+    <%= form.text_field :button_prompt, class: <<~CLASSES
+    p-default bg-white dark:bg-black border border-gray-25
+    dark:border-gray-75 mb-2
+    rounded-md focus:outline-none focus:border-blue-75
+    dark:focus:border-blue-25 shadow-md dark:shadow-black
+    CLASSES
+    %>
+
+    <%= form.label :step_count, 'Schritte' %>
+    <%= form.number_field :step_count, class: <<~CLASSES
+    p-default bg-white dark:bg-black border border-gray-25
+    dark:border-gray-75 mb-2
+    rounded-md focus:outline-none focus:border-blue-75
+    dark:focus:border-blue-25 shadow-md dark:shadow-black
+    CLASSES
+    %>
+
+    <%= button_tag name: 'commit',
+            class: 'text-sm px-2 py-1 rounded-md bg-blue-100
+                    text-white shadow-md dark:shadow-black mb-4' do %>
+        Stufendiagnostik aktualisieren
+    <% end %>
+  </div>
+<% end %>
+    
+<%= turbo_frame_tag 'new_diagnostic_type', src: new_stepwise_diagnostic_node_diagnostic_type_path(stepwise_diagnostic_node) %>

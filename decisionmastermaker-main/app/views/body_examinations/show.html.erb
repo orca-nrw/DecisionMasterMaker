@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @body_examination %>
+
+<div>
+  <%= link_to "Edit this body examination", edit_body_examination_path(@body_examination) %> |
+  <%= link_to "Back to body examinations", body_examinations_path %>
+
+  <%= button_to "Destroy this body examination", @body_examination, method: :delete %>
+</div>

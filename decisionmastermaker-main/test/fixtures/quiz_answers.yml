@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  QuizNode: one
+  text: MyString
+  points: 1
+
+two:
+  QuizNode: two
+  text: MyString
+  points: 1

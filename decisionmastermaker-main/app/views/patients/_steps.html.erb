@@ -1,0 +1,5 @@
+<ol id="steps" class="flex flex-col gap-2 mb-4" data-controller="patient-steps">
+    <% Step.uncached { patient.steps }.each do |step| %>
+        <%= render 'patients/step', step: step %>
+    <% end %>
+</ol>

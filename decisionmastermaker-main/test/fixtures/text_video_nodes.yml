@@ -1,0 +1,9 @@
+one:
+  id: 1
+  step_id: 1
+  video: https://wms01-avmz.germanywestcentral.cloudapp.azure.com/vsemera/_definst/mp4:ProtectYourIdeasvsemera-05_10.mp4/playlist.m3u8
+
+two:
+  id: 2
+  step_id: 2
+  video: https://wms01-avmz.germanywestcentral.cloudapp.azure.com/vsemera/_definst/mp4:ProtectYourIdeasvsemera-05_10.mp4/playlist.m3u8

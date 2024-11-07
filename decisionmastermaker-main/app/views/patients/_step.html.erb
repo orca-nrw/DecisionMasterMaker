@@ -1,0 +1,42 @@
+<%= turbo_frame_tag dom_id(step) do %>
+<%
+    bg = ''
+    case step[:status]
+    when 'todo'
+        bg = 'bg-red-100 text-white'
+    when 'doing'
+        bg = 'bg-yellow-100 text-black'
+    when 'done'
+        bg = 'bg-green-100 text-white'
+    else
+        bg = 'bg-gray-50 text-black'
+    end
+%>
+<li class="flex items-center p-default rounded-md <%= bg %> shadow-md dark:shadow-black" id="<%= dom_id step %>">
+  <%= link_to step_lower_path(step), class: 'p-2 pl-0' do %>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  <% end %>
+  <%= form_for step do |f| %>
+    <%= f.number_field :position, class: "w-10 h-8 p-0 text-center #{bg} border-2 border-current rounded-md hide-arrows" %>
+  <% end %>
+  <%= link_to step_higher_path(step), class: 'p-2' do %>
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+    </svg>
+  </button>
+<% end %>
+<span class="mr-auto">
+  <%= "#{t(step[:interactable_type])}: #{step[:problem]}" %>
+</span>
+<span>
+  (<%= step.max_score %> Punkte)
+</span>
+<a href="<%= edit_step_path(step) %>" target="_top">
+  <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+  </svg>
+</a>
+</li>
+<% end %>

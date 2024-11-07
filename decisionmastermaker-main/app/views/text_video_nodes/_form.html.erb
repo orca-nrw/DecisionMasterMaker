@@ -1,0 +1,29 @@
+<%= form_with(model: text_video_node) do |form| %>
+  <% if text_video_node.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(text_video_node.errors.count, "error") %> prohibited this text_video_node from being saved:</h2>
+
+      <ul>
+        <% text_video_node.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-4">
+    <fieldset class="flex flex-col">
+        <%= form.label :video, t('textVideoNodeVideo'), class: 'mb-2' %>
+        <%= form.text_field :video, class: <<~CLASSES
+            p-default bg-white dark:bg-black border border-gray-25
+            dark:border-gray-75 mb-4
+            rounded-md focus:outline-none focus:border-blue-75
+            dark:focus:border-blue-25 shadow-md dark:shadow-black
+            CLASSES
+        %>
+        <%= form.label :content, t('textVideoNodeText'), class: 'mb-2' %>
+        <%= form.rich_text_area :content, class: 'mb-4' %>
+    </fieldset>
+    <%= form.submit 'TextVideoNode aktualisieren', class: %w[p-default btn-primary] %>
+  </div>
+<% end %>

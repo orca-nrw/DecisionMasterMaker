@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Body nodes</h1>
+
+<div id="body_nodes">
+  <% @body_nodes.each do |body_node| %>
+    <%= render body_node %>
+    <p>
+      <%= link_to "Show this body node", body_node %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New body node", new_body_node_path %>

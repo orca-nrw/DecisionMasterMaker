@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="max-w-xl" id="attachments">
+  <% outdated = @attachments.filter {|a| a.updated_at < Date.parse('2022-08-23')} %>
+  <% if outdated.length > 0 %>
+    <div class="mb-4 border-2 border-red-100 rounded-lg p-default">
+    Die Dateianhänge dieser Zusatzmaterialien müssen neu hochgeladen werden:
+    <% outdated.each do |attachment| %>
+      <%= render attachment %>
+    <% end %>
+    </div>
+  <% end %>
+  Alle Anhänge:
+  <% @attachments.each do |attachment| %>
+    <%= render attachment %>
+  <% end %>
+</div>

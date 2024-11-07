@@ -1,0 +1,13 @@
+<% desc ||= 'Stub' %>
+
+<div class="p-default mb-4 bg-white dark:bg-black shadow-md dark:shadow-black/90 ring-1 ring-gray-25 dark:ring-gray-75 rounded-lg">
+    <div class="divide-y divide-gray-25 dark:divide-gray-75">
+        <div class="text-base">
+            <h2 class="font-bold my-2"><%= title %></h2>
+            <div class="text-xs text-gray-75 dark:text-gray-25 mb-2">
+                <%= desc %>
+            </div>
+        </div>
+        <%= yield %>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<%= form_with(model: quiz_node) do |form| %>
+  <% if quiz_node.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(quiz_node.errors.count, "error") %> prohibited this quiz_node from being saved:</h2>
+
+      <ul>
+        <% quiz_node.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :question, t('quizNodeQuestion') %>
+    <%= form.rich_text_area :question, class: 'mb-4' %>
+    
+    <div class="flex gap-2 items-center mb-4">
+      <%= form.label :multiple_choice, 'Einfache Antwort' %>
+      <%= form.check_box :multiple_choice, class: 'toggle' %>
+      <%= form.label :multiple_choice, 'Mehrfache Antwort' %>
+    </div>
+    
+    <%= button_tag name: 'commit',
+            class: 'text-sm px-2 py-1 rounded-md bg-blue-100
+                    text-white shadow-md dark:shadow-black mb-4' do %>
+        Quizfrage aktualisieren
+    <% end %>
+  </div>
+<% end %>
+    
+<%= turbo_frame_tag 'new-quiz-answer', src: new_quiz_node_quiz_answer_path(quiz_node) %>
+
+<fieldset class="flex flex-col mb-4" data-controller="accordion">
+    <div class="py-2 flex justify-between items-center border-b border-gray-25 dark:border-gray-75 hover:cursor-pointer" data-action="click->accordion#toggle">
+    <legend>
+        <%= t('quizNodeAnswers') %>:
+    </legend>
+    <svg xmlns="http://www.w3.org/2000/svg" data-accordion-target="indicator" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+    </div>
+    <div class="pl-2 mt-4 border-l-4 border-blue-100" data-accordion-target="body">
+        <div id="quiz-answers">
+            <%= render quiz_node.quiz_answers %>
+        </div>
+    </div>
+</fieldset>

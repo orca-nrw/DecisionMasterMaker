@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Nklm links</h1>
+
+<div id="nklm_links">
+  <% @nklm_links.each do |nklm_link| %>
+    <%= render nklm_link %>
+    <p>
+      <%= link_to "Show this nklm link", nklm_link %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New nklm link", new_nklm_link_path %>

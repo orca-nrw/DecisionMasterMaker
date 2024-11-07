@@ -1,0 +1,6 @@
+<%= render "layouts/modal" do %>
+<h1><%= t('attachmentEdit', attachment_name: @attachment.title) %></h1>
+
+<%= render "form", attachment: @attachment, btn_text: t('attachmentEdit', attachment_name: @attachment.title) %>
+
+<% end %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fuse_node %>
+
+<div>
+  <%= link_to "Edit this fuse node", edit_fuse_node_path(@fuse_node) %> |
+  <%= link_to "Back to fuse nodes", fuse_nodes_path %>
+
+  <%= button_to "Destroy this fuse node", @fuse_node, method: :delete %>
+</div>

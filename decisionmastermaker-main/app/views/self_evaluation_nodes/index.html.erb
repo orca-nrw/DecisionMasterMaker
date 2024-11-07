@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Self evaluation nodes</h1>
+
+<div id="self_evaluation_nodes">
+  <% @self_evaluation_nodes.each do |self_evaluation_node| %>
+    <%= render self_evaluation_node %>
+    <p>
+      <%= link_to "Show this self evaluation node", self_evaluation_node %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New self evaluation node", new_self_evaluation_node_path %>

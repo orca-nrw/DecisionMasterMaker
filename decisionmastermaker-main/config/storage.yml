@@ -1,0 +1,14 @@
+test:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
+local:
+  service: Disk
+  root: <%= Rails.root.join("storage") %>
+
+# Use bin/rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
+azure_storage:
+  service: AzureStorage
+  storage_account_name:
+  storage_access_key:
+  container:
